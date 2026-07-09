@@ -1,26 +1,191 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream-50: #fff7e6;
+  --cream-100: #fff3d6;
+  --cream-200: #f5e6c8;
+  --beige-300: #e4c89a;
+  --brown-400: #c4a882;
+  --brown-500: #a67c52;
+  --brown-600: #6b4f2a;
+  --brown-700: #8b6e44;
+  --brown-800: #3b2f23;
+  --accent-orange: #f48c5b;
+  --accent-red: #e25d5d;
+  --accent-green: #7fc97f;
+  --accent-blue: #8ecef4;
+  --accent-pink: #e88ba0;
+  --accent-yellow: #f5d76e;
+  --grass-light: #8bc97f;
+  --grass-dark: #6bab62;
+  --path-light: #dcc9a8;
+  --path-dark: #b89968;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-beige-300: var(--beige-300);
+  --color-brown-400: var(--brown-400);
+  --color-brown-500: var(--brown-500);
+  --color-brown-600: var(--brown-600);
+  --color-brown-700: var(--brown-700);
+  --color-brown-800: var(--brown-800);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-red: var(--accent-red);
+  --color-accent-green: var(--accent-green);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-grass-light: var(--grass-light);
+  --color-grass-dark: var(--grass-dark);
+  --color-path-light: var(--path-light);
+  --color-path-dark: var(--path-dark);
+
+  --font-display: var(--font-press-start);
+  --font-body: var(--font-noto-sans-kr);
+
+  --text-pixel-xs: 0.625rem;
+  --text-pixel-sm: 0.75rem;
+  --text-pixel-base: 0.875rem;
+  --text-pixel-lg: 1rem;
+  --text-pixel-xl: 1.125rem;
+  --text-pixel-2xl: 1.25rem;
+
+  --shadow-pixel: 3px 3px 0 0 var(--brown-700);
+  --shadow-pixel-sm: 2px 2px 0 0 var(--brown-700);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility font-display {
+  font-family: var(--font-display), monospace;
+}
+
+@utility font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+@utility text-pixel-xs {
+  font-size: var(--text-pixel-xs);
+  line-height: 1.4;
+}
+
+@utility text-pixel-sm {
+  font-size: var(--text-pixel-sm);
+  line-height: 1.4;
+}
+
+@utility text-pixel-base {
+  font-size: var(--text-pixel-base);
+  line-height: 1.5;
+}
+
+@utility text-pixel-lg {
+  font-size: var(--text-pixel-lg);
+  line-height: 1.5;
+}
+
+@utility text-pixel-xl {
+  font-size: var(--text-pixel-xl);
+  line-height: 1.4;
+}
+
+@utility text-pixel-2xl {
+  font-size: var(--text-pixel-2xl);
+  line-height: 1.3;
+}
+
+@utility pixel-border {
+  box-shadow:
+    0 -2px 0 0 var(--brown-700),
+    0 2px 0 0 var(--brown-700),
+    -2px 0 0 0 var(--brown-700),
+    2px 0 0 0 var(--brown-700);
+}
+
+@utility pixel-border-inset {
+  box-shadow:
+    inset 0 2px 0 0 var(--brown-700),
+    inset 0 -2px 0 0 var(--beige-300),
+    inset 2px 0 0 0 var(--brown-700),
+    inset -2px 0 0 0 var(--beige-300);
+}
+
+@utility shadow-pixel {
+  box-shadow: var(--shadow-pixel);
+}
+
+@utility shadow-pixel-sm {
+  box-shadow: var(--shadow-pixel-sm);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream-50);
+  color: var(--brown-800);
+  font-family: var(--font-body), "Noto Sans KR", sans-serif;
+}
+
+@keyframes pixel-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes pixel-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes walk-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+.animate-pixel-bounce {
+  animation: pixel-bounce 0.2s ease-in-out;
+}
+
+.animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.animate-pixel-blink {
+  animation: pixel-blink 2s ease-in-out infinite;
+}
+
+.animate-walk-bob {
+  animation: walk-bob 0.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pixel-blink,
+  .animate-pixel-bounce,
+  .animate-walk-bob {
+    animation: none;
+  }
 }

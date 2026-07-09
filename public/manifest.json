@@ -1,0 +1,10 @@
+{
+  "name": "월급마을",
+  "short_name": "월급마을",
+  "description": "월급날까지 버티는 사람들의 익명 도트 생존방 커뮤니티",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF7E6",
+  "theme_color": "#FFF7E6",
+  "orientation": "portrait"
+}
