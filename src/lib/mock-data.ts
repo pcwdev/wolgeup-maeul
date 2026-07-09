@@ -15,6 +15,7 @@ export interface CurrentUser {
   roomTheme: string;
   diaryEntry: string;
   visitorCount: number;
+  coins: number;
 }
 
 export interface FeedPost {
@@ -75,6 +76,7 @@ export const currentUser: CurrentUser = {
   diaryEntry:
     "점심 샐러드 먹었는데 저녁에 치킨 땡김... 월급날까지 버텨야지. 라면이라도 끓여먹을까.",
   visitorCount: 3,
+  coins: 1250,
 };
 
 export const squareFeed: FeedPost[] = [

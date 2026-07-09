@@ -1,35 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --cream-50: #fff7e6;
-  --cream-100: #fff3d6;
+  --village-bg: #fff7e8;
+  --panel: #fff1d6;
+  --panel-dark: #e8c98f;
+  --border: #5b3a1e;
+  --text: #2b1a10;
+  --muted: #7a6042;
+  --primary: #f48c6b;
+  --sub: #e4c89a;
+  --success: #7fc97f;
+  --warning: #e2a640;
+  --danger: #e25d5d;
+  --sky: #8ecef4;
+
+  /* legacy aliases */
+  --cream-50: var(--village-bg);
+  --cream-100: var(--panel);
   --cream-200: #f5e6c8;
-  --beige-300: #e4c89a;
-  --brown-400: #c4a882;
-  --brown-500: #a67c52;
-  --brown-600: #6b4f2a;
-  --brown-700: #8b6e44;
-  --brown-800: #3b2f23;
-  --accent-orange: #f48c5b;
-  --accent-red: #e25d5d;
-  --accent-green: #7fc97f;
-  --accent-blue: #8ecef4;
+  --beige-300: var(--sub);
+  --brown-700: var(--border);
+  --brown-800: var(--text);
+  --accent-orange: var(--primary);
+  --accent-red: var(--danger);
+  --accent-green: var(--success);
+  --accent-blue: var(--sky);
   --accent-pink: #e88ba0;
   --accent-yellow: #f5d76e;
-  --grass-light: #8bc97f;
-  --grass-dark: #6bab62;
-  --path-light: #dcc9a8;
-  --path-dark: #b89968;
 }
 
 @theme inline {
+  --color-village-bg: var(--village-bg);
+  --color-panel: var(--panel);
+  --color-panel-dark: var(--panel-dark);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-sub: var(--sub);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-sky: var(--sky);
+
   --color-cream-50: var(--cream-50);
   --color-cream-100: var(--cream-100);
   --color-cream-200: var(--cream-200);
   --color-beige-300: var(--beige-300);
-  --color-brown-400: var(--brown-400);
-  --color-brown-500: var(--brown-500);
-  --color-brown-600: var(--brown-600);
   --color-brown-700: var(--brown-700);
   --color-brown-800: var(--brown-800);
   --color-accent-orange: var(--accent-orange);
@@ -38,10 +55,6 @@
   --color-accent-blue: var(--accent-blue);
   --color-accent-pink: var(--accent-pink);
   --color-accent-yellow: var(--accent-yellow);
-  --color-grass-light: var(--grass-light);
-  --color-grass-dark: var(--grass-dark);
-  --color-path-light: var(--path-light);
-  --color-path-dark: var(--path-dark);
 
   --font-display: var(--font-press-start);
   --font-body: var(--font-noto-sans-kr);
@@ -53,8 +66,8 @@
   --text-pixel-xl: 1.125rem;
   --text-pixel-2xl: 1.25rem;
 
-  --shadow-pixel: 3px 3px 0 0 var(--brown-700);
-  --shadow-pixel-sm: 2px 2px 0 0 var(--brown-700);
+  --shadow-pixel: 3px 3px 0 0 var(--border);
+  --shadow-pixel-sm: 2px 2px 0 0 var(--border);
 }
 
 @utility font-display {
@@ -97,18 +110,18 @@
 
 @utility pixel-border {
   box-shadow:
-    0 -2px 0 0 var(--brown-700),
-    0 2px 0 0 var(--brown-700),
-    -2px 0 0 0 var(--brown-700),
-    2px 0 0 0 var(--brown-700);
+    0 -2px 0 0 var(--border),
+    0 2px 0 0 var(--border),
+    -2px 0 0 0 var(--border),
+    2px 0 0 0 var(--border);
 }
 
 @utility pixel-border-inset {
   box-shadow:
-    inset 0 2px 0 0 var(--brown-700),
-    inset 0 -2px 0 0 var(--beige-300),
-    inset 2px 0 0 0 var(--brown-700),
-    inset -2px 0 0 0 var(--beige-300);
+    inset 0 2px 0 0 var(--border),
+    inset 0 -2px 0 0 var(--panel-dark),
+    inset 2px 0 0 0 var(--border),
+    inset -2px 0 0 0 var(--panel-dark);
 }
 
 @utility shadow-pixel {
@@ -120,8 +133,8 @@
 }
 
 body {
-  background: var(--cream-50);
-  color: var(--brown-800);
+  background: #f4ead8;
+  color: var(--text);
   font-family: var(--font-body), "Noto Sans KR", sans-serif;
 }
 
@@ -145,23 +158,13 @@ body {
   }
 }
 
-@keyframes pixel-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.75;
-  }
-}
-
 @keyframes walk-bob {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 }
 
@@ -173,17 +176,12 @@ body {
   animation: float 2.5s ease-in-out infinite;
 }
 
-.animate-pixel-blink {
-  animation: pixel-blink 2s ease-in-out infinite;
-}
-
 .animate-walk-bob {
-  animation: walk-bob 0.8s ease-in-out infinite;
+  animation: walk-bob 0.9s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
-  .animate-pixel-blink,
   .animate-pixel-bounce,
   .animate-walk-bob {
     animation: none;
